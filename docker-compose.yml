@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+
+  nginx:
+    container_name: nginx
+    build: ./devops/nginx/
+    ports:
+      - target: 80
+        published: 80
+    volumes:
+      - ./tmp/cache:/tmp/cache
+    depends_on:
+      - api
+
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/opt/api
+    env_file:
+      - devops/common.env
+    ports:
+      - target: 5000
+        published: 5000
+    expose:
+      - 5000
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis:6.0.6-alpine
+    ports:
+      - target: 6379
+        published: 6379
+    expose:
+      - 6379
