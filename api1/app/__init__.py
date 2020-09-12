@@ -15,5 +15,5 @@ CACHE = Cache(APP)
 @CACHE.cached()
 def root():
     time.sleep(10)
-    logging.info('root')
-    return 'root'
+    logging.info('api1')
+    return 'api1'

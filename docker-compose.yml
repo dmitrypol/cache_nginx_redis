@@ -11,28 +11,47 @@ services:
     volumes:
       - ./tmp/cache:/tmp/cache
     depends_on:
-      - api
+      - api1
+      - api2
 
-  api:
-    container_name: api
+  api1:
+    container_name: api1
     build:
-      context: .
+      context: api1
       dockerfile: Dockerfile
     volumes:
-      - ./:/opt/api
+      - ./api1:/opt/api1
     env_file:
       - devops/common.env
     ports:
-      - target: 5000
-        published: 5000
+      - target: 5001
+        published: 5001
     expose:
-      - 5000
+      - 5001
     depends_on:
       - redis
 
+  api2:
+    container_name: api2
+    build:
+      context: api2
+      dockerfile: Dockerfile
+    volumes:
+      - ./api2:/opt/api2
+    env_file:
+      - devops/common.env
+    ports:
+      - target: 5002
+        published: 5002
+    expose:
+      - 5002
+    depends_on:
+      - redis
+
+    
   redis:
     container_name: redis
-    image: redis:6.0.6-alpine
+    image: redis:6.0.8-alpine
     ports:
       - target: 6379
         published: 6379

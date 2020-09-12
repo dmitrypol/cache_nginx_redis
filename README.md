@@ -4,8 +4,8 @@
 docker-compose up --build -d
 ```
 
-* Nginx cache - http://localhost/
-* Redis - cache http://localhost:5000/
+* Nginx cache - http://localhost/api1
+* Redis - cache http://localhost:5001/
 
 
 # Perf benchmark
@@ -14,8 +14,8 @@ docker-compose up --build -d
 
 ```
 # nginx cache
-./wrk http://localhost/
-Running 10s test @ http://localhost/
+./wrk http://localhost/api1
+Running 10s test @ http://localhost/api1
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
     Latency    23.38ms   12.61ms  71.50ms   61.52%
@@ -25,8 +25,8 @@ Requests/sec:    428.75
 Transfer/sec:     77.86KB
 
 # redis cache
-./wrk http://localhost:5000/
-Running 10s test @ http://localhost:5000/
+./wrk http://localhost:5001/
+Running 10s test @ http://localhost:5001/
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
     Latency    65.27ms   51.33ms 472.13ms   96.54%

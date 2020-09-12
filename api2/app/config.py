@@ -11,6 +11,7 @@ SECRET_KEY = 'foobar'
 
 CACHE_TYPE = 'redis'
 CACHE_REDIS_HOST = 'redis'
+CACHE_REDIS_DB = 2
 CACHE_DEFAULT_TIMEOUT = 60
 
 if APP_ENV == 'test':
