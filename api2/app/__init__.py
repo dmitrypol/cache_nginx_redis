@@ -19,10 +19,10 @@ def root():
     return 'api2'
 
 
-@APP.route('/api1')
-def api1():
+@APP.route('/getapi1')
+def getapi1():
     #api1_url = 'http://api1:5001'
     api1_url = 'http://nginx/api1/'
-    req = requests.get(api1_url)
-    logging.info(req)
-    return req.text
+    resp = requests.get(api1_url)
+    logging.info(resp)
+    return resp.text
