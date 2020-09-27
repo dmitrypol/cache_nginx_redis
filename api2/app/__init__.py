@@ -1,7 +1,7 @@
 ''' app initializer  '''
 import time
 import logging
-from flask import Flask
+from flask import Flask, jsonify
 from flask_caching import Cache
 import requests
 
@@ -14,9 +14,9 @@ CACHE = Cache(APP)
 @APP.route('/')
 @CACHE.cached()
 def root():
-    time.sleep(10)
+    time.sleep(5)
     logging.info('api2')
-    return 'api2'
+    return jsonify({'api': 'two'})
 
 
 @APP.route('/getapi1')
