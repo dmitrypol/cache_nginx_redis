@@ -11,8 +11,8 @@ docker-compose up --build -d
 api1 is built using Python Flask and api2 uses Java Dropwizard.  To start api2 oustide the container `cd api2` and `java -jar target/api2-1.0-SNAPSHOT.jar server config.yml`.  Check that it's is running via `http://localhost:8080` and `http://localhost:8081/healthcheck`.  
 
 
-* Nginx cache - http://localhost/api1
-* Redis - cache http://localhost:5001/
+* Nginx cache - http://localhost/api1 and http://localhost/api2
+* Redis cache - http://localhost:5000/ and http://localhost:8080
 
 
 # Perf benchmark
@@ -32,8 +32,8 @@ Requests/sec:    428.75
 Transfer/sec:     77.86KB
 
 # redis cache
-./wrk http://localhost:5001/
-Running 10s test @ http://localhost:5001/
+./wrk http://localhost:5000/
+Running 10s test @ http://localhost:5000/
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
     Latency    65.27ms   51.33ms 472.13ms   96.54%

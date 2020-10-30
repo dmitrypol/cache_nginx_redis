@@ -25,10 +25,10 @@ services:
     env_file:
       - devops/common.env
     ports:
-      - target: 5001
-        published: 5001
+      - target: 5000
+        published: 5000
     expose:
-      - 5001
+      - 5000
     depends_on:
       - redis
 

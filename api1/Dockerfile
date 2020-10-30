@@ -10,5 +10,5 @@ COPY Pipfile* ./
 RUN pipenv install --system --dev && rm -rf /root/.cache/pip
 COPY ./ ./
 
-EXPOSE 5001
+EXPOSE 5000
 ENTRYPOINT ["./entrypoint.sh"]
