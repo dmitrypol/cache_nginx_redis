@@ -37,15 +37,16 @@ services:
     build:
       context: api2
       dockerfile: Dockerfile
-    volumes:
-      - ./api2:/opt/api2
     env_file:
       - devops/common.env
     ports:
-      - target: 5002
-        published: 5002
+      - target: 8080
+        published: 8080
+      - target: 8081
+        published: 8081
     expose:
-      - 5002
+      - 8080
+      - 8081
     depends_on:
       - redis
     

@@ -1,8 +1,15 @@
 # Setup
 
+* Install Docker Compose https://docs.docker.com/compose/install/
+* Install Apache Maven https://maven.apache.org/install.html
+
 ```
+mvn clean install
 docker-compose up --build -d
 ```
+
+api1 is built using Python Flask and api2 uses Java Dropwizard.  To start api2 oustide the container `cd api2` and `java -jar target/api2-1.0-SNAPSHOT.jar server config.yml`.  Check that it's is running via `http://localhost:8080` and `http://localhost:8081/healthcheck`.  
+
 
 * Nginx cache - http://localhost/api1
 * Redis - cache http://localhost:5001/

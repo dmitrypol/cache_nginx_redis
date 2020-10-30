@@ -1,14 +1,11 @@
-FROM python:3.6.8
+# we will use openjdk 8 with alpine as it is a very small linux distro
+FROM openjdk:8-jre-alpine3.9
 
-ENV app_name=api2
-ENV home_dir=/opt/${app_name}/
-RUN mkdir -p ${home_dir}
-WORKDIR ${home_dir}
+EXPOSE 8080
+EXPOSE 8081
 
-RUN pip install --upgrade pip && pip install pipenv 
-COPY Pipfile* ./
-RUN pipenv install --system --dev && rm -rf /root/.cache/pip
-COPY ./ ./
+COPY target/api2-1.0-SNAPSHOT.jar /demo.jar
+COPY config.yml /config.yml
 
-EXPOSE 5002
-ENTRYPOINT ["./entrypoint.sh"]
+# set the startup command to execute the jar
+CMD ["java", "-jar", "/demo.jar", "server", "/config.yml"]

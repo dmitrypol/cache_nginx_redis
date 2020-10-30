@@ -30,7 +30,7 @@ def hello():
 
 @APP.route('/getapi2')
 def getapi2():
-    #api2_url = 'http://api2:5002'
+    #api2_url = 'http://api2:8080'
     api2_url = 'http://nginx/api2/'
     resp = requests.get(api2_url)
     logging.info(resp)
